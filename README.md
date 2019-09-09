@@ -39,3 +39,5 @@ Yuthance backend API
 
 * Testing
 `pytest --cov=app`
+[] A user should be able to make a payment
+[] There needs to be logs. 
