@@ -31,7 +31,7 @@ Yuthance backend API
 * Perform migrations
 `python manage.py migrate`
 
-* Create superuser(password: password123)
+* Create superuser
 `python manage.py createsuperuser --email admin@example.com --username admin`
 
 * Run the app
