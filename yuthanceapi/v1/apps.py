@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class YuthanceapiConfig(AppConfig):
-    name = 'yuthanceapi'
+    name = 'v1'
