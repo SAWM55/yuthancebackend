@@ -11,6 +11,7 @@ mccabe==0.6.1
 more-itertools==7.2.0
 packaging==19.1
 pep8==1.7.1
+phonenumbers==8.10.18
 pkg-resources==0.0.0
 pluggy==0.13.0
 psycopg2==2.7.1
@@ -20,6 +21,7 @@ pylint==2.3.1
 pyparsing==2.4.2
 pytest==5.1.2
 pytest-cov==2.7.1
+pytest-django==3.5.1
 pytz==2019.2
 six==1.12.0
 typed-ast==1.4.0
