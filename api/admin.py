@@ -2,13 +2,15 @@
 
 Author: David Macharia
 """
+
 from django.contrib import admin
 
 # Register your models here.
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, UserProfile
+from .models import User
+from .v1.models.user_model import UserProfile
 
 
 class UserProfileInline(admin.StackedInline):
