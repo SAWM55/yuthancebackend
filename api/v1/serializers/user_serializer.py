@@ -1,12 +1,14 @@
 """This module defines the user serializer classes.
 
-Author: David Macharia
+Author GitHub: @Dave-mash
 """
 
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
-from api.models import User, UserProfile
+
+from api.v1.models.user_model import UserProfile
+from ...models import User
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -23,11 +25,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     profile = UserProfileSerializer(required=True)
 
     class Meta:
+        
         model = User
         fields = ('url', 'email', 'first_name',
                   'last_name', 'password', 'profile')
         extra_kwargs = {'password': {'write_only': True}}
 
+    # Standard create and update methods for a Writable Nested Serializer
     def create(self, validated_data):
         profile_data = validated_data.pop('profile')
         password = validated_data.pop('password')

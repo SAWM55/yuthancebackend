@@ -1,6 +1,6 @@
 """This module registers models.
 
-Author: David Macharia
+Author GitHub: @Dave-mash
 """
 
 from django.contrib import admin

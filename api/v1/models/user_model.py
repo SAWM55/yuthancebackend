@@ -1,6 +1,6 @@
 """This module defines the user model.
 
-Author: David Macharia
+Author GitHub: @Dave-mash
 """
 
 from django.conf import settings
@@ -10,8 +10,16 @@ class UserProfile(models.Model):
     """Adds extra user fields"""
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
-    phone_number = models.CharField(max_length=9)
+    phone_number = models.CharField(max_length=13, unique=True)
     address = models.CharField(max_length=255, unique=False)
     city = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='uploads', blank=True)
+
+    def __repr__(self):
+        
+        return {
+            "phone_number": self.phone_number,
+            "address": self.address,
+            "city": self.city
+        }
     

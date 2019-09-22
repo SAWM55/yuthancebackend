@@ -1,6 +1,6 @@
 """This module modifies authentication fields.
 
-Author: David Macharia
+Author GitHub: @Dave-mash
 """
 
 from django.db import models
@@ -20,5 +20,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
-    def __str__(self):
+    def __repr__(self):
+        return "{}".format(self.email)
+
+    def get_user_by_email(self):
         return "{}".format(self.email)
