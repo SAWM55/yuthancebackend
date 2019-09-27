@@ -21,7 +21,7 @@ Yuthance backend API
 `cd yuthancebackend`
 
 * Create a virtual environment
-`python3 -m venv venv`
+`python3 -m venv env`
 
 * Set the environment variables
 `mv .env.example .env`

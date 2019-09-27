@@ -3,10 +3,14 @@ python:
   - "3.6"
 # command to install dependencies
 install:
+  - cd yuthancebackend
+  - python3 -m venv env
+  - source env/bin/activate
   - pip install -r requirements.txt
+  - python manage.py migrate
 # command to run tests
 script:
   - pytest
 # run coveralls after successful tests
 after_success:
-- coveralls
+- pytest --cov=api

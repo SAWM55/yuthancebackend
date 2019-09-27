@@ -30,25 +30,25 @@ class UserViewTest(APITestCase):
         self.assertEqual(self.user.email, 'doe@example.com')
         self.assertTrue(len(json.loads(response.content)) == User.objects.count())
 
-#     def test_create_user(self):
-#         """
-#         Ensure we can create a new user and a valid token is created with it.
-#         """
-#         pass
-#         # data = {
-#         #     'first_name': 'Jane',
-#         #     'last_name': 'Doe',
-#         #     'email': 'jane@example.com',
-#         #     'password': 'somepassword'
-#         # }
+    def test_create_user(self):
+        """
+        Ensure we can create a new user and a valid token is created with it.
+        """
+        pass
+        # data = {
+        #     'first_name': 'Jane',
+        #     'last_name': 'Doe',
+        #     'email': 'jane@example.com',
+        #     'password': 'somepassword'
+        # }
 
-#         # response = self.client.post(self.create_url, data, format='json')
+        # response = self.client.post(self.create_url, data, format='json')
 
-#         # # We want to make sure we have two users in the database..
-#         # self.assertEqual(User.objects.count(), 2)
-#         # # And that we're returning a 201 created code.
-#         # self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-#         # # Additionally, we want to return the username and email upon successful creation.
-#         # self.assertEqual(response.data['username'], data['username'])
-#         # self.assertEqual(response.data['email'], data['email'])
-#         # self.assertFalse('password' in response.data)
+        # # We want to make sure we have two users in the database..
+        # self.assertEqual(User.objects.count(), 2)
+        # # And that we're returning a 201 created code.
+        # self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        # # Additionally, we want to return the username and email upon successful creation.
+        # self.assertEqual(response.data['username'], data['username'])
+        # self.assertEqual(response.data['email'], data['email'])
+        # self.assertFalse('password' in response.data)
