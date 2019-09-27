@@ -9,9 +9,9 @@ from ...models import User
 class TestUserModel(TestCase):
 
     def setUp(self):
-        User.objects.create(email='doe@example.com')
+        user = User.objects.create(email='doe@example.com')
 
-    def test_user_found(self):
-        
+    def test_user_model(self):
+
         user = User.objects.get(email='doe@example.com')
         self.assertEqual(user.get_user_by_email(), 'doe@example.com')

@@ -14,12 +14,4 @@ class UserProfile(models.Model):
     address = models.CharField(max_length=255, unique=False)
     city = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='uploads', blank=True)
-
-    def __repr__(self):
-        
-        return {
-            "phone_number": self.phone_number,
-            "address": self.address,
-            "city": self.city
-        }
     
