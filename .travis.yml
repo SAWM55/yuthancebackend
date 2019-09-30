@@ -11,6 +11,7 @@ script:
   - pytest
 before_script:
   - psql -c 'create database test_yuthance;' -U postgres
+  - psql -c "CREATE ROLE yuthance SUPERUSER LOGIN CREATEDB;" -U postgres
 # run coveralls after successful tests
 after_success:
 - pytest --cov=api
