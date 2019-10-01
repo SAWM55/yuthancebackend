@@ -13,7 +13,7 @@ class TestUserProfileSerializers(APITestCase):
     """
 
     def test_UserProfileSerializer_serializes_correctly(self):
-        user_profile_data = {'phone_number': '',
+        user_profile_data = {'username': '', 'phone_number': '',
                              'address': '', 'city': '', 'photo': None}
 
         serializer = UserProfileSerializer()
@@ -32,7 +32,7 @@ class TestUserSerializers(APITestCase):
     Test that the UserSerializers works as expected
     """
     user_data = {'email': '', 'first_name': '', 'last_name': '', 'password': '', 'profile': {
-            'phone_number': '', 'address': '', 'city': '', 'photo': None}}
+            'username': '', 'phone_number': '', 'address': '', 'city': '', 'photo': None}}
 
     def test_UserSerializer_serializes_correctly(self):
 

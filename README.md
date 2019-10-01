@@ -7,12 +7,18 @@ Yuthance backend API
 
 ## Features
 
-* [ ] A user should be able to sign up.
-* [ ] A user should be able to log in.
-* [ ] A user should be able to log out.
+### User accounts
+
+* [x] A user should be able to create an account.
+* [ ] A user should be able to log in to their account.
+
+### Cart
+
 * [ ] A user should be able to add an item to cart.
+
+### Transactions
+
 * [ ] A user should be able to make a payment
-* [ ] There needs to be logs.
 
 ## Installation
 
@@ -41,3 +47,15 @@ Yuthance backend API
 
 * Testing
 `pytest`
+
+### Yuthance application endpoints
+
+| Endpoint        | Functionality           | HTTP method  |
+| ------------- |:-------------:| -----:|
+| `/users/?format=json`      | Register a user | POST |
+| `/users/<int:id>`      | view, edit, delete a user | GET, PATCH, DELETE |
+| `/auth/login`      | Login a user       |   POST |
+
+### Authors
+
+David Macharia @[Dave-mash](https://github.com/Dave-mash)
