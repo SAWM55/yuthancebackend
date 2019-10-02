@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/Dave-mash/yuthancebackend.svg?branch=master)](https://travis-ci.org/Dave-mash/yuthancebackend)
 [![Coverage Status](https://coveralls.io/repos/github/Dave-mash/yuthancebackend/badge.svg?branch=master)](https://coveralls.io/github/Dave-mash/yuthancebackend?branch=master)
-
 Yuthance backend API
 
 ## Features
