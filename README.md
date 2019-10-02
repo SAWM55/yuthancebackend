@@ -10,7 +10,7 @@ Yuthance backend API
 ### User accounts
 
 * [x] A user should be able to create an account.
-* [ ] A user should be able to log in to their account.
+* [x] A user should be able to log in to their account.
 
 ### Cart
 
