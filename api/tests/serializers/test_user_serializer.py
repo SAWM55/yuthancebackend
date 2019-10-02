@@ -13,7 +13,7 @@ class TestUserProfileSerializers(APITestCase):
     """
 
     def test_UserProfileSerializer_serializes_correctly(self):
-        user_profile_data = {'phone_number': '',
+        user_profile_data = {'username': '', 'phone_number': '',
                              'address': '', 'city': '', 'photo': None}
 
         serializer = UserProfileSerializer()
@@ -31,8 +31,8 @@ class TestUserSerializers(APITestCase):
     """
     Test that the UserSerializers works as expected
     """
-    user_data = {'email': '', 'first_name': '', 'last_name': '', 'password': '', 'profile': {
-            'phone_number': '', 'address': '', 'city': '', 'photo': None}}
+    user_data = {'email': '', 'first_name': '', 'last_name': '', 'password': '', 'confirm_password': '', 'profile': {
+            'username': '', 'phone_number': '', 'address': '', 'city': '', 'photo': None}}
 
     def test_UserSerializer_serializes_correctly(self):
 
@@ -46,19 +46,9 @@ class TestUserSerializers(APITestCase):
 
         user = UserSerializer()
         fields = ('url', 'email', 'first_name',
-                  'last_name', 'password', 'profile')
+                  'last_name', 'password', 'confirm_password', 'profile')
         kwargs = {'password': {'write_only': True}}
 
         self.assertEqual(self.user_data, serializer.data)
         self.assertEqual(user.Meta().fields, fields)
         self.assertEqual(user.Meta().extra_kwargs, kwargs)
-
-    def test_UserSerializer_create(self):
-
-        serializer = UserSerializer()
-        # self.assertEqual(serializer.create([]), 'abc')
-
-    def test_UserSerializer_update(self):
-
-        serializer = UserSerializer()
-        # self.assertEqual(serializer.update([]), 'abc')
