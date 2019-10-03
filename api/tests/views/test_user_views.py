@@ -3,14 +3,16 @@
 Author Github: @Dave-mash
 """
 
-from api.v1.serializers.user_serializer import UserSerializer
 import json
+from rest_framework.test import RequestsClient
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView
 from urllib.parse import urlsplit
+
+from api.v1.serializers.user_serializer import UserSerializer
 
 User = get_user_model()
 
@@ -19,6 +21,8 @@ class UserViewTest(APITestCase):
     """This class contains tests for the UserView"""
 
     users_url = reverse("users")
+    client = RequestsClient()
+
 
     def setUp(self):
         # We want to go ahead and originally create a user.
@@ -84,12 +88,49 @@ class UserViewTest(APITestCase):
     def test_login_user(self):
         """Test that a user can log into their account"""
         
+        new_user_res = self.client.post(self.users_url + "/?format=json", data=self.data, format='json')
+        self.assertEqual(new_user_res.status_code, 201)
+
+        login_data = {
+            "email": self.data['email'],
+            "password": self.data['password']
+        }
+        login_path = '/api/v1/auth/login/'
+        
         # wrong credentials
-        self.assertFalse(self.client.login(email='doe@example.com', password='pass'))
-        self.assertFalse(self.client.login(email='doeexample.com', password='password'))
+        login_data2 = login_data.copy()
+        login_data2['password'] = 'pass'
+        invalid_info_login_res = self.client.post(path=login_path, data=login_data2, format='json')
+        self.assertEqual(invalid_info_login_res.data['non_field_errors'][0], "Unable to log in with provided credentials.")
 
         # successful login
-        self.assertTrue(self.client.login(email='doe@example.com', password='password'))
+        res = self.client.post(path=login_path, data=login_data, format='json')
+        self.assertTrue(res.data['token'])
+
+    def test_log_out_user(self):
+        """Test that a user is able to log out of a user session"""
+        
+        # create user
+        new_user_res = self.client.post(self.users_url + "/?format=json", data=self.data, format='json')
+        self.assertEqual(new_user_res.status_code, 201)
+
+        # log in user
+        login_data = {
+            "email": self.data['email'],
+            "password": self.data['password']
+        }
+        login_path = '/api/v1/auth/login/'
+
+        res = self.client.post(path=login_path, data=login_data, format='json')
+        csrftoken = res.cookies['csrftoken']
+
+        self.assertTrue(res.data['token'])
+
+        # log out the user
+        logout_path = '/api/v1/auth/logout/'
+        logout_res = self.client.post(logout_path, headers={'X-CSRFToken': csrftoken})
+
+        self.assertEqual(logout_res.data['detail'], 'Successfully logged out.')
 
     def test_view_all_users(self):
         """Test that all users can be viewed"""
